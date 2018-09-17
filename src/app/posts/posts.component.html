@@ -1,0 +1,35 @@
+
+<div class="container">
+    <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <div id="imaginary_container"> 
+                  <div class="input-group stylish-input-group">
+                      <input [(ngModel)]="search" type="number" #id class="form-control"  placeholder="Search by User id">
+                      <span class="input-group-addon">
+                          <button (click)="findByUserId(id.value)"> 
+                              <span class="glyphicon glyphicon-search"></span>
+                          </button>  
+                      </span>
+                  </div>
+              </div>
+        </div>
+    </div>
+  </div>
+
+<table id="customers" style="margin-top:30px;">
+
+
+    <tr>
+      <th>Post Id</th>
+      <th>Post Title</th>
+      <th>User Name</th>
+    </tr>
+    <h1 *ngIf="noneFound" style="text-align:center;">no results</h1>
+
+    <tr *ngFor="let post of posts">
+      <td>{{post.id}}</td>
+      <td>{{post.title}}</td>
+        <td *ngIf="users">{{getUser(post.userId)}}</td>
+    </tr>
+    
+  </table>

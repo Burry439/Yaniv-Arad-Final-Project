@@ -1,0 +1,28 @@
+      
+         
+   
+
+    <form action="">
+        <input type="radio" name="gender" checked='true'  value="all" (click)="filterTasks('all')" >  All <br>
+        <input type="radio" name="gender" value="completed" (click)="filterTasks(true)"> Completed<br>
+        <input type="radio" name="gender" value="noy completed" (click)="filterTasks(false)">  Not Completed
+      </form>
+
+<table id="customers" style="margin-top:30px;">
+
+
+    <tr>
+      <th>Task Title</th>
+      <th>User Id</th>
+      <th>Completed</th>
+    </tr>
+
+    <tr *ngFor="let task of tasks">
+      <td>{{task.title}}</td>
+      <td>{{task.userId}}</td>
+        <td *ngIf="task.completed" style="color:green">Completed</td>
+        <td *ngIf="!task.completed" style="color:red">Not Completed</td>
+
+    </tr>
+    
+  </table>

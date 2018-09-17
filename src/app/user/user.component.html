@@ -1,0 +1,57 @@
+
+<div *ngIf="user">
+  <h1>User info</h1>
+Name : {{user.name}} <br>
+Eamil : {{user.email}} <br>
+City : {{user.address.city}} <br>
+<button class="btn btn-sm btn-primary" style="margin:20px;" (click)="editMode = !editMode"> 
+    <span *ngIf="!editMode"> Edit</span>
+    <span *ngIf="editMode"> cancel</span>
+</button>
+<button class="btn btn-sm btn-danger" style="margin:20px;" (click)="deleteUser(user.id)">Delete</button>
+
+<form *ngIf="editMode" #f="ngForm" >
+    <label class="label" for="">Name</label>
+
+     <input type="text" ngModel #name=ngModel name="name" class="form-control input-sm" placeholder="name"  required>
+      <span *ngIf="!name.valid && name.touched">please add a new name</span><br>
+
+
+      <label class="label" for="">Email</label>
+
+      <input type="text" ngModel #email=ngModel name="email" class="form-control input-sm" placeholder="email"  required email>
+      <span *ngIf="!email.valid && email.touched">please add a new email</span><br>
+        
+
+      
+      <label class="label" for="">City</label>
+
+      <input type="text" ngModel #city=ngModel name="city" class="form-control input-sm" placeholder="city"  required>
+      <span *ngIf="!city.valid && city.touched">please add a new city</span><br>
+      
+       <button [disabled]="f.invalid" (click)=" editUser({name:name.value, email:email.value, city:city.value})" class="btn btn-primary">save</button>              
+  </form>
+
+</div>
+
+<hr>
+
+<div *ngIf="posts">
+  <h1>User Posts</h1>
+    <ul>
+        <li *ngFor="let post of posts">Title: {{post.title}} </li>
+    </ul>
+</div>
+
+<hr>
+
+<div *ngIf="tasks">
+    <h1>User Tasks</h1>
+      <ul>
+          <li *ngFor="let task of tasks">Title: {{task.title}}:  Completed:
+             <span *ngIf="task.completed" style="color:blue">Finished</span>
+             <span *ngIf="!task.completed" style="color:red">Not Finished</span>
+
+          </li>
+      </ul>
+  </div>

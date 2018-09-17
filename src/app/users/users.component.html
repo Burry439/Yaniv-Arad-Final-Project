@@ -1,0 +1,14 @@
+<app-search></app-search>
+
+
+<div class="container" style="margin-top:50px;">
+     <div class="row">
+         <div class="col-sm-6 col-sm-offset-3">
+            <h1>All Users</h1>
+              <hr>
+       <ul>
+           <a *ngFor="let user of users" (click)="toUser(user.id)"> {{user.name}}</a>         
+       </ul>
+    </div>
+  </div>
+</div>
